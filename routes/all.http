@@ -168,12 +168,12 @@ PUT  http://localhost:8080/api/user
 Content-Type: application/json
 
 {
-   "id": "2",
-   "name": "bbbbb",
+   "id": "6dc7831a-c143-4fee-831c-cc463cd33ba5",
+   "name": "daria",
    "email": "ii",
    "password": "8974",
    "phone": 99238974,
-   "likes": [] 
+   "likes": ["sgfrwrewrwe"] 
 }
 
 
@@ -244,3 +244,14 @@ Content-Type: application/json
 {
    "brandName" : "Bags" 
 }
+
+
+
+
+//design
+###
+GET   http://localhost:8080/api/design
+
+
+###
+PUT  http://localhost:8080/api/design

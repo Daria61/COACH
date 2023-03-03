@@ -1,4 +1,3 @@
-const { log } = require("console")
 const fs = require("fs")
 const mainData = process.cwd() + "/data/usersData.json"
 const uuid = require("uuid")
@@ -30,7 +29,7 @@ exports.getOne = (req, res) =>{
 }
 
 exports.create = (req, res)=>{
-    const {name, email, password, phone,likes} = req.body
+    const {name, email, password, phone} = req.body
     fs.readFile(mainData, "utf-8", async (err, data)=>{
         if(err){
             return res.json({status: false, message: err})
@@ -46,7 +45,7 @@ exports.create = (req, res)=>{
             email,
             password: newPassword,
             phone,
-            "likes": likes
+            "likes": []
         }
         pData.push(obj)
         fs.writeFile(mainData, JSON.stringify(pData), (err)=>{
@@ -80,7 +79,9 @@ exports.delete=(req, res)=>{
 }
 
 exports.put=(req, res)=>{
-    const {id,name, email, password, phone, lastLoginDate ,likes } = req.body
+    const {id,name, email, password, phone ,likes } = req.body
+    console.log(likes, id , name) ;
+
     fs.readFile(mainData, "utf-8", async (err, data)=>{
         if(err){
             return res.json({status: false, message: err})
@@ -97,7 +98,7 @@ exports.put=(req, res)=>{
                     email,
                     password : newPassword,
                     phone,
-                    "likes": likes }
+                    likes }
             }else{
                 return a
             }
@@ -137,6 +138,7 @@ exports.login =(req, res)=>{
                         id: parData[i].id,
                         email : parData[i].email,
                         name: parData[i].name,
+                        likes: parData[i].likes
                     }
                     break
                 }

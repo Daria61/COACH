@@ -50,7 +50,6 @@ exports.create = (req, res) =>{
         "img": body.img,
         "thumb": body.thumb
         }
-        console.log(obj);
         parseData.push(obj)
         fs.writeFile(DataFile, JSON.stringify(parseData), (err)=>{
             if(err){
